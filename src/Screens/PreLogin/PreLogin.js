@@ -19,8 +19,12 @@ const PreLogin = () => {
                 <Image
                     resizeMode='contain'
                     source={require('../../assets/logo.png')}
-                    style={{ height: '10%', width: '80%', marginBottom: 50, marginTop: 50 }}
-                />
+                    style={{
+                      width: '72%',
+                      height: 120,
+                      marginBottom: 40,
+                      marginTop: 30,
+                    }}                />
                 <ButtonComponent
                     btnText={"Signin with Email"}
                     img={imagePath.email}
