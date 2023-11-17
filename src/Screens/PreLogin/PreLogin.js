@@ -1,8 +1,8 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, Image } from 'react-native';
-import HeaderComponent from '../../Components/HeaderComponent';
-import ButtonComponent from '../../Components/ButtonComponent';
+import HeaderComponent from '../../components/HeaderComponent';
+import ButtonComponent from '../../components/ButtonComponent';
 import imagePath from '../../Constants/imagePath';
 
 // create a component

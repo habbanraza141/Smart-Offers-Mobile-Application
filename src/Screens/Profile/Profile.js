@@ -1,29 +1,8 @@
-import React, {Component} from 'react';
-import {View, Text, Image, TouchableOpacity, Dimensions} from 'react-native';
-import {Colors, Icon, NavService} from '../../config';
-import {ScrollView} from 'react-native-gesture-handler';
-import Header from '../../components/Header';
-import {connect} from 'react-redux';
-import {logout} from '../../redux/actions';
-import moment from 'moment';
+import React from 'react';
+import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
+import Colors from '../../config';
 
-const {height, width} = Dimensions.get('screen');
-
-class App extends Component {
-  render() {
-    const {
-      user_fname,
-      user_lname,
-      user_email,
-      user_image,
-      user_dob,
-      user_city,
-      user_state,
-      user_gender,
-    } = this.props.user;
-    const url =
-      'http://server.appsstaging.com:3013/' + user_image.replace(/\\/g, '/');
-
+const Profile = () => {
     return (
       <View
         style={{
@@ -38,9 +17,7 @@ class App extends Component {
             style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <View style={{width: '100%', alignItems: 'center'}}>
               <TouchableOpacity
-                onPress={() => {
-                  this.props.navigation.navigate('EditProfile');
-                }}
+              
                 style={{
                   position: 'absolute',
                   right: 30,
@@ -71,19 +48,15 @@ class App extends Component {
             <Text
               numberOfLines={1}
               style={{fontSize: 18, fontWeight: '600', marginTop: 15}}>
-              {`${user_fname} ${user_lname}`}
-            </Text>
+jbfksdjlbfsj            </Text>
             <Text numberOfLines={1} style={{fontSize: 16, marginTop: 10}}>
-              {user_email}
-            </Text>
+habban            </Text>
             <Text numberOfLines={1} style={{fontSize: 16}}>
-              {user_gender},{' '}
-              {moment().format('YYYY') - moment(user_dob).format('YYYY')} yrs
+male              15 yrs
               old
             </Text>
             <Text numberOfLines={1} style={{fontSize: 16}}>
-              {user_city}, {user_state}
-            </Text>
+karachi            </Text>
           </View>
           <View
             style={{
@@ -94,9 +67,8 @@ class App extends Component {
             }}>
             <View style={{flex: 1, paddingVertical: 30, paddingHorizontal: 25}}>
               <TouchableOpacity
-                onPress={() => {
-                  this.props.navigation.navigate('ChangePassword');
-                }}
+    
+    
                 style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
                 <Image
                   source={require('../../assets/Icons/changePassword.png')}
@@ -113,9 +85,8 @@ class App extends Component {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => {
-                  this.props.navigation.navigate('TermsConditionsApp');
-                }}
+      
+      
                 style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
                 <Image
                   source={require('../../assets/Icons/terms.png')}
@@ -137,9 +108,8 @@ class App extends Component {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => {
-                  this.props.navigation.navigate('PrivacyPolicyApp');
-                }}
+            
+            
                 style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
                 <Image
                   source={require('../../assets/Icons/privacy.png')}
@@ -161,8 +131,8 @@ class App extends Component {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={this.props.logout}
-                style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
+
+style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
                 <Image
                   source={require('../../assets/Icons/logout.png')}
                   style={{
@@ -187,24 +157,8 @@ class App extends Component {
         </ScrollView>
       </View>
     );
-  }
+  
 }
 
-function mapState({reducer: {user}}) {
-  return {
-    user,
-  };
-}
 
-function mapDispatch(dispatch) {
-  return {
-    logout: () => {
-      dispatch(logout());
-    },
-  };
-}
-
-export default connect(
-  mapState,
-  mapDispatch,
-)(App);
+export default Profile

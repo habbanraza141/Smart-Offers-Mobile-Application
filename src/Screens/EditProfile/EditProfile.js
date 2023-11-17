@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -10,156 +10,10 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
-import {Colors, Icon} from '../../config';
-import CheckboxList from '../../components/rn-checkbox-list';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import ImagePicker from 'react-native-image-crop-picker';
-import {connect} from 'react-redux';
-import {categoryList, updateProfile} from '../../redux/actions';
-import moment from 'moment';
+import Colors from '../../config/colors/index'
 
-const {height, width} = Dimensions.get('screen');
-
-class App extends Component {
-  state = {
-    firstName: this.props.user.user_fname,
-    lastName: this.props.user.user_lname,
-    dateOfBirth:
-      this.props.user.user_dob != null
-        ? new Date(moment(this.props.user.user_dob).format())
-        : new Date(),
-    city: this.props.user.user_city,
-    province: this.props.user.user_state,
-    pickerModal: false,
-    imageUrl: '', // this.props.user.user_image,
-    imageType: '',
-    categoryID:
-      this.props.user.userCategory != null ? this.props.user.userCategory : [],
-    categoryList: [],
-    gender: this.props.user.user_gender,
-  };
-
-  componentDidMount() {
-    this.props.categoryList(this.saveCategory);
-  }
-
-  saveCategory = categoryList => {
-    this.setState({categoryList});
-  };
-
-  updateProfile = () => {
-    const {
-      firstName,
-      lastName,
-      dateOfBirth,
-      city,
-      province,
-      imageUrl,
-      imageType,
-      categoryID,
-      gender,
-    } = this.state;
-    if (!firstName && !lastName && !dateOfBirth && !city && !province) {
-      return Toast.show({
-        text1: 'Please enter all info',
-        type: 'error',
-        visibilityTime: 3000,
-      });
-    }
-    const goto = 'Profile';
-    const dob = moment(dateOfBirth).format('YYYY MM DD');
-
-    let category_id = [];
-
-    if (categoryID != null) {
-      category_id = categoryID.map(category_id => {
-        return {
-          category_id,
-        };
-      });
-    }
-    this.props.updateProfile(
-      firstName,
-      lastName,
-      dob,
-      city,
-      province,
-      imageUrl,
-      imageType,
-      category_id,
-      gender,
-      goto,
-    );
-  };
-
-  uploadImage = () => {
-    ImagePicker.openPicker({
-      width: 400,
-      height: 400,
-      cropping: true,
-    }).then(image => {
-      this.setState({imageUrl: image.path, imageType: image.mime});
-    });
-  };
-
-  _selection = gender1 => {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          this.setState({gender: gender1});
-        }}
-        style={[
-          {
-            width: 80,
-            height: 70,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 5,
-            backgroundColor:
-              this.state.gender === gender1 ? Colors.primary : Colors.border,
-          },
-        ]}>
-        {gender1 === 'others' ? (
-          <Text
-            style={{
-              fontSize: 14,
-              color: 'white',
-            }}>
-            Other
-          </Text>
-        ) : (
-          <Image
-            source={
-              gender1 === 'male'
-                ? require('../../assets/IconMale.png')
-                : require('../../assets/IconFemale.png')
-            }
-            style={{
-              width: 17,
-              height: 45,
-            }}
-          />
-        )}
-      </TouchableOpacity>
-    );
-  };
-
-  render() {
-    const {
-      firstName,
-      lastName,
-      dateOfBirth,
-      city,
-      province,
-      pickerModal,
-      imageUrl,
-      categoryList,
-      categoryID,
-      gender,
-    } = this.state;
-    const {user_image} = this.props.user;
-
+const EditProfile = () => {
     return (
       <ImageBackground
         source={require('../../assets/bg.png')}
@@ -167,22 +21,10 @@ class App extends Component {
         style={{
           flex: 1,
         }}>
-        <DateTimePickerModal
-          isVisible={pickerModal}
-          mode="date"
-          onConfirm={date => {
-            this.setState({pickerModal: false, dateOfBirth: date});
-          }}
-          onCancel={() => {
-            this.setState({pickerModal: false});
-          }}
-          date={dateOfBirth}
-        />
+        
         <View style={{width: '100%', alignItems: 'center'}}>
           <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate('Profile');
-            }}
+           
             style={{
               position: 'absolute',
               top: getStatusBarHeight() + 15,
@@ -208,9 +50,7 @@ class App extends Component {
             EDIT PROFILE
           </Text>
         </View>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{alignItems: 'center', paddingHorizontal: 30}}>
+        
           <View
             style={{
               alignItems: 'flex-end',
@@ -218,23 +58,17 @@ class App extends Component {
               marginTop: 40,
             }}>
             <Image
-              source={
-                user_image
-                  ? {
-                      uri: `http://server.appsstaging.com:3013/${user_image}`,
-                    }
-                  : require('../../assets/pp.jpeg')
+              source={require('../../assets/pp.jpeg')
               }
               style={{
-                width: width * 0.4,
-                height: width * 0.4,
-                borderRadius: (width * 0.4) / 2,
+                width: 200,
+                height: 200,
+                borderRadius: 100,
                 borderColor: Colors.darkOrange,
                 borderWidth: 6,
               }}
             />
             <TouchableOpacity
-              onPress={this.uploadImage}
               style={{
                 width: 40,
                 height: 40,
@@ -280,10 +114,7 @@ class App extends Component {
                   height: 40,
                   width: '100%',
                 }}
-                value={firstName}
-                onChangeText={firstName =>
-                  this.setState({firstName, error: false})
-                }
+               
                 placeholder={'First Name'}
                 placeholderTextColor={'#fff'}
               />
@@ -303,10 +134,7 @@ class App extends Component {
                   height: 40,
                   width: '100%',
                 }}
-                value={lastName}
-                onChangeText={lastName =>
-                  this.setState({lastName, error: false})
-                }
+             
                 placeholder="Last Name"
                 placeholderTextColor={'#fff'}
               />
@@ -321,9 +149,7 @@ class App extends Component {
             }}>
             <Text style={{color: '#fff', fontSize: 12}}>Date of Birth</Text>
             <TouchableOpacity
-              onPress={() => {
-                this.setState({pickerModal: true});
-              }}>
+          >
               <Text
                 style={{
                   color: '#fff',
@@ -333,7 +159,6 @@ class App extends Component {
                   width: '85%',
                   paddingVertical: 10,
                 }}>
-                {dateOfBirth.toDateString()}
               </Text>
               <Image
                 source={require('../../assets/Icons/calendar.png')}
@@ -370,9 +195,7 @@ class App extends Component {
                   height: 40,
                   width: '100%',
                 }}
-                value={city}
-                onChangeText={city => this.setState({city, error: false})}
-                placeholder="City"
+                  placeholder="City"
                 placeholderTextColor={'#fff'}
               />
             </View>
@@ -393,10 +216,6 @@ class App extends Component {
                   height: 40,
                   width: '100%',
                 }}
-                value={province}
-                onChangeText={province =>
-                  this.setState({province, error: false})
-                }
                 placeholder="Province / State"
                 placeholderTextColor={'#fff'}
               />
@@ -417,10 +236,7 @@ class App extends Component {
                 justifyContent: 'space-between',
                 width: '90%',
               }}>
-              {this._selection('male')}
-              {this._selection('female')}
-              {this._selection('others')}
-            </View>
+                  </View>
           </View>
           <View
             style={{
@@ -451,24 +267,7 @@ class App extends Component {
                 Notify me for new offer on:
               </Text>
             </View>
-            <CheckboxList
-              theme="white"
-              listItems={categoryList}
-              onChange={({ids}) => {
-                ids[0] != categoryID[0]
-                  ? this.setState({categoryID: ids})
-                  : null;
-              }}
-              // selectedListItems={categoryList}
-              checkboxProp={{
-                boxType: 'square',
-                tintColor: 'white',
-                onCheckColor: Colors.darkOrange,
-                tintColors: {true: '#fff', false: '#fff'},
-              }}
-              onLoading={() => <ActivityIndicator size="large" />}
-              textStyle={{color: 'white'}}
-            />
+         
           </View>
           <TouchableOpacity
             onPress={this.updateProfile}
@@ -483,54 +282,10 @@ class App extends Component {
             }}>
             <Text style={{fontSize: 16}}>Done</Text>
           </TouchableOpacity>
-        </ScrollView>
+          
       </ImageBackground>
     );
   }
-}
 
-function mapState({reducer: {user}}) {
-  return {
-    user,
-  };
-}
 
-function mapDispatch(dispatch) {
-  return {
-    categoryList: saveCategory => {
-      dispatch(categoryList(saveCategory));
-    },
-    updateProfile: (
-      firstName,
-      lastName,
-      dateOfBirth,
-      city,
-      province,
-      imageUrl,
-      imageType,
-      userCategory,
-      gender,
-      goto,
-    ) => {
-      dispatch(
-        updateProfile(
-          firstName,
-          lastName,
-          dateOfBirth,
-          city,
-          province,
-          imageUrl,
-          imageType,
-          userCategory,
-          gender,
-          goto,
-        ),
-      );
-    },
-  };
-}
-
-export default connect(
-  mapState,
-  mapDispatch,
-)(App);
+export default EditProfile;

@@ -1,65 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
   Text,
   ImageBackground,
   Image,
   TouchableOpacity,
-  Dimensions,
   TextInput,
-  Keyboard,
+  ScrollView,
 } from 'react-native';
-import {Colors, Icon, NavService} from '../../config';
-import Toast from 'react-native-toast-message';
-import {getStatusBarHeight} from 'react-native-status-bar-height';
-import * as EmailValidator from 'email-validator';
-import {login} from '../../redux/actions';
-import {connect} from 'react-redux';
-import {ScrollView} from 'react-native-gesture-handler';
 
-var passwordValidator = require('password-validator');
-var schema = new passwordValidator();
-schema
-  .is()
-  .min(8)
-  .is()
-  .max(100);
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
-const {height, width} = Dimensions.get('screen');
-
-class App extends Component {
-  state = {
-    email: '',
-    password: '',
-  };
-
-  login = () => {
-    const {email, password} = this.state;
-    if (!email && !password)
-      return Toast.show({
-        text1: 'Please enter all info',
-        type: 'error',
-        visibilityTime: 3000,
-      });
-    if (!EmailValidator.validate(email))
-      return Toast.show({
-        text1: 'Email not valid',
-        type: 'error',
-        visibilityTime: 3000,
-      });
-    if (!schema.validate(password))
-      return Toast.show({
-        text1: 'Password not valid (Use atleast eight character)',
-        type: 'error',
-        visibilityTime: 3000,
-      });
-
-    this.props.login(email.toLowerCase(), password);
-  };
-
-  render() {
-    const {email, password} = this.state;
-
+const LoginWithEmail = () => {
     return (
       <ImageBackground
         source={require('../../assets/bg.png')}
@@ -73,12 +25,7 @@ class App extends Component {
           }}>
           <View style={{width: '100%', alignItems: 'center'}}>
             <TouchableOpacity
-              onPress={() => {
-                Keyboard.dismiss();
-                setTimeout(() => {
-                  this.props.navigation.goBack();
-                }, 100);
-              }}
+            
               style={{
                 position: 'absolute',
                 top: getStatusBarHeight() + 15,
@@ -158,9 +105,7 @@ class App extends Component {
                     width: '85%',
                     // backgroundColor: 'red',
                   }}
-                  value={email}
-                  onChangeText={email => this.setState({email, error: false})}
-                  placeholder="Email Address"
+                 placeholder="Email Address"
                   placeholderTextColor={'#fff'}
                 />
               </View>
@@ -198,17 +143,12 @@ class App extends Component {
                     height: 40,
                     width: '85%',
                   }}
-                  value={password}
-                  onChangeText={password =>
-                    this.setState({password, error: false})
-                  }
                   placeholder="Password"
                   placeholderTextColor={'#fff'}
                 />
               </View>
             </View>
             <TouchableOpacity
-              onPress={this.login}
               style={{
                 width: '80%',
                 height: 50,
@@ -221,9 +161,7 @@ class App extends Component {
               <Text style={{fontSize: 16}}>Signin</Text>
             </TouchableOpacity>
             <Text
-              onPress={() => {
-                this.props.navigation.navigate('ForgetPassword');
-              }}
+  
               style={{
                 marginTop: 40,
                 color: '#fff',
@@ -246,9 +184,7 @@ class App extends Component {
               }}>
               Don't have an account?{' '}
               <Text
-                onPress={() => {
-                  this.props.navigation.navigate('Signup');
-                }}
+               
                 style={{
                   textDecorationLine: 'underline',
                 }}>
@@ -260,17 +196,7 @@ class App extends Component {
       </ImageBackground>
     );
   }
-}
 
-function mapDispatch(dispatch) {
-  return {
-    login: (email, password) => {
-      dispatch(login(email, password));
-    },
-  };
-}
 
-export default connect(
-  null,
-  mapDispatch,
-)(App);
+
+export default LoginWithEmail

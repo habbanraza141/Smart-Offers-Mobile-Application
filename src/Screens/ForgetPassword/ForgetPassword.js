@@ -104,8 +104,6 @@ const ForgetPassword = () => {
                   width: '85%',
                   // backgroundColor: 'red',
                 }}
-                value={email}
-                onChangeText={email => this.setState({email, error: false})}
                 placeholder="Email Address"
                 placeholderTextColor={'#fff'}
               />
