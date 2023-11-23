@@ -23,12 +23,7 @@ const CompleteProfile = () => {
         
         <View style={{width: '100%', alignItems: 'center'}}>
           <TouchableOpacity
-            onPress={() => {
-              Keyboard.dismiss();
-              setTimeout(() => {
-                this.props.navigation.goBack();
-              }, 100);
-            }}
+          
             style={{
               position: 'absolute',
               top: getStatusBarHeight() + 15,
@@ -155,9 +150,7 @@ const CompleteProfile = () => {
             }}>
             <Text style={{color: '#fff', fontSize: 12}}>Date of Birth</Text>
             <TouchableOpacity
-              onPress={() => {
-                this.setState({pickerModal: true});
-              }}>
+           >
               <Text
                 style={{
                   color: '#fff',
@@ -281,8 +274,8 @@ const CompleteProfile = () => {
           
           </View>
           <TouchableOpacity
-            onPress={this.updateProfile}
-            style={{
+
+style={{
               width: '100%',
               height: 50,
               alignItems: 'center',
