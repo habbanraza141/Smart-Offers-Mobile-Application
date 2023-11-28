@@ -1,12 +1,18 @@
 //import liraries
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import navigationStrings from '../../Constants/navigationStrings';
 
 // create a component
-const Home = () => {
+const Home = ({navigation}) => {
     return (
         <View style={styles.container}>
+            <TouchableOpacity 
+            onPress={()=>navigation.navigate(navigationStrings.PRE_LOGIN)}
+            >
+
             <Text>MyComponent</Text>
+            </TouchableOpacity>
         </View>
     );
 };

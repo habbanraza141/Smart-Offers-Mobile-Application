@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, Text, ImageBackground, Image, TouchableOpacity, TextInput} from 'react-native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+import navigationStrings from '../../Constants/navigationStrings';
 
-const ChangePassword = () => {
+const ChangePassword = ({navigation}) => {
     return (
       <ImageBackground
         source={require('../../assets/bg.png')}
@@ -16,6 +17,7 @@ const ChangePassword = () => {
           }}>
           <View style={{width: '100%', alignItems: 'center'}}>
             <TouchableOpacity
+            onPress={()=>navigation.navigate('Profile')}
               style={{
                 position: 'absolute',
                 top: getStatusBarHeight() + 15,

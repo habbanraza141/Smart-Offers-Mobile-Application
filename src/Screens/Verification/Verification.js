@@ -12,7 +12,7 @@ import {getStatusBarHeight} from 'react-native-status-bar-height';
 import navigationStrings from '../../Constants/navigationStrings';
 
 
-const ForgetPassword = ({navigation}) => {
+const Verification = ({navigation}) => {
    return (
       <ImageBackground
         source={require('../../assets/bg.png')}
@@ -26,7 +26,7 @@ const ForgetPassword = ({navigation}) => {
           }}>
           <View style={{width: '100%', alignItems: 'center'}}>
             <TouchableOpacity
-              onPress={() => {navigation.navigate(navigationStrings.LOGIN_WITH_EMAIL);
+              onPress={() => {navigation.navigate(navigationStrings.FORGET_PASSWORD);
                 
               }}
               style={{
@@ -50,9 +50,7 @@ const ForgetPassword = ({navigation}) => {
                 marginTop: getStatusBarHeight() + 15,
                 fontSize: 16,
                 fontWeight: 'bold',
-              }}>
-              FORGET PASSWORD
-            </Text>
+              }}>VERIFY YOUR ACCOUNT</Text>
           </View>
           <Image
             resizeMode="contain"
@@ -92,7 +90,7 @@ const ForgetPassword = ({navigation}) => {
               }}
             />
             <View style={{marginLeft: 15, width: '100%'}}>
-              <Text style={{color: '#fff', fontSize: 12}}>Email Address</Text>
+              <Text style={{color: '#fff', fontSize: 12}}>OTP</Text>
               <TextInput
                 style={{
                   color: '#fff',
@@ -102,14 +100,14 @@ const ForgetPassword = ({navigation}) => {
                   width: '85%',
                   // backgroundColor: 'red',
                 }}
-                placeholder="Email Address"
+                placeholder="Type OTP"
                 placeholderTextColor={'#fff'}
               />
             </View>
           </View>
 
           <TouchableOpacity
-            onPress={()=>navigation.navigate(navigationStrings.VERIFICATION)}
+            onPress={()=>navigation.navigate(navigationStrings.LOGIN_WITH_EMAIL)}
             style={{
               width: '80%',
               height: 50,
@@ -119,7 +117,7 @@ const ForgetPassword = ({navigation}) => {
               marginTop: 40,
               borderRadius: 10,
             }}>
-            <Text style={{fontSize: 16}}>Proceed to Verification</Text>
+            <Text style={{fontSize: 16}}>Proceed to Login</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -127,4 +125,4 @@ const ForgetPassword = ({navigation}) => {
   }
 
 
-export default ForgetPassword;
+export default Verification;

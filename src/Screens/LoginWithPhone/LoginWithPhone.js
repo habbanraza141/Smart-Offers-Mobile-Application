@@ -9,9 +9,10 @@ import {
 } from 'react-native';
 import Colors from '../../config/colors/index';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
+import navigationStrings from '../../Constants/navigationStrings';
 
 
-const LoginWithPhone = () => {
+const LoginWithPhone = ({navigation}) => {
 
     return (
       <ImageBackground
@@ -26,7 +27,8 @@ const LoginWithPhone = () => {
           }}>
           <View style={{width: '100%', alignItems: 'center'}}>
             <TouchableOpacity
-         
+                     onPress={()=>navigation.navigate(navigationStrings.PRE_LOGIN)}
+
          
               style={{
                 position: 'absolute',
@@ -194,7 +196,7 @@ const LoginWithPhone = () => {
           </View>
           <TouchableOpacity
         
-        
+        onPress={()=>navigation.navigate('HomeStack')}
             style={{
               width: '80%',
               height: 50,

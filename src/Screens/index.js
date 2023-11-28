@@ -16,3 +16,4 @@ export {default as TermsAndConditions} from './TermsAndConditions/TermsAndCondit
 export {default as PrivacyPolicy} from './PrivacyPolicy/PrivacyPolicy'
 export {default as EditProfile} from './EditProfile/EditProfile'
 export {default as CouponDetails} from './EditProfile/EditProfile'
+export {default as Verification} from './Verification/Verification'

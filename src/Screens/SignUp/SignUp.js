@@ -12,9 +12,10 @@ import {
 } from 'react-native';
 import Colors from '../../config/colors/index';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
+import navigationStrings from '../../Constants/navigationStrings';
 
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
     return (
       <ImageBackground
         source={require('../../assets/bg.png')}
@@ -202,7 +203,9 @@ style={{
                 backgroundColor: '#fff',
                 marginVertical: 30,
                 borderRadius: 10,
-              }}>
+              }}
+              onPress={()=>navigation.navigate(navigationStrings.LOGIN_WITH_EMAIL)}
+              >
               <Text style={{fontSize: 16}}>Signup</Text>
             </TouchableOpacity>
           </View>

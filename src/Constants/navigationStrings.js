@@ -9,6 +9,12 @@ export default {
     NEW_PASSWORD: "NewPassword",
     OFFER_DETAILS: "OfferDetails",
     PRE_LOGIN: "PreLogin",
+    TERMS_AND_CONDITIONS: "TermsAndConditions",
     PRIVACY_POLICY: "PrivacyPolicy",
-    SIGN_UP: "SignUp"
+    SIGN_UP: "SignUp",
+    HOME: "Home",
+    COUPONS: "Coupons",
+    NOTIFICATIONS: "Notifications",
+    PROFILE: "Profile",
+    VERIFICATION: "Verification"
 }

@@ -4,9 +4,10 @@ import { View, Text, StyleSheet, ImageBackground, Image } from 'react-native';
 import HeaderComponent from '../../components/HeaderComponent';
 import ButtonComponent from '../../components/ButtonComponent';
 import imagePath from '../../Constants/imagePath';
+import navigationStrings from '../../Constants/navigationStrings';
 
 // create a component
-const PreLogin = () => {
+const PreLogin = ({navigation}) => {
     return (
         <ImageBackground
             source={require('../../assets/bg.png')}
@@ -30,6 +31,7 @@ const PreLogin = () => {
                     img={imagePath.email}
                     btnStyle={{ width: '100%', marginBottom: 15 }}
                     btnTextStyle={{}}
+                    onPress={()=>navigation.navigate(navigationStrings.LOGIN_WITH_EMAIL)}
                 />
 
                 <ButtonComponent
@@ -37,6 +39,8 @@ const PreLogin = () => {
                     img={imagePath.phone}
                     btnStyle={{ width: '100%', marginBottom: 15 }}
                     btnTextStyle={{}}
+                    onPress={()=>navigation.navigate(navigationStrings.LOGIN_WITH_PHONE)}
+
                 />
 
                 <ButtonComponent
@@ -44,6 +48,8 @@ const PreLogin = () => {
                     img={imagePath.apple}
                     btnStyle={{ width: '100%', marginBottom: 15 }}
                     btnTextStyle={{}}
+                    onPress={()=>navigation.navigate('HomeStack')}
+
                 />
 
                 <ButtonComponent
@@ -51,6 +57,8 @@ const PreLogin = () => {
                     img={imagePath.facebook}
                     btnStyle={{ width: '100%', marginBottom: 15 }}
                     btnTextStyle={{}}
+                    onPress={()=>navigation.navigate('HomeStack')}
+
                 />
 
                 <ButtonComponent
@@ -58,6 +66,8 @@ const PreLogin = () => {
                     img={imagePath.google}
                     btnStyle={{ width: '100%', marginBottom: 15 }}
                     btnTextStyle={{}}
+                    onPress={()=>navigation.navigate('HomeStack')}
+
                 />
 
             </View>
