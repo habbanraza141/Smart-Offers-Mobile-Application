@@ -8,7 +8,7 @@ const Home = ({navigation}) => {
     return (
         <View style={styles.container}>
             <TouchableOpacity 
-            onPress={()=>navigation.navigate(navigationStrings.PRE_LOGIN)}
+            onPress={()=>navigation.navigate(navigationStrings.OFFER_DETAILS)}
             >
 
             <Text>MyComponent</Text>
