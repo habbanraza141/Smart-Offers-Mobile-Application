@@ -13,6 +13,8 @@ import {
 import Colors from '../../config/colors/index';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 import navigationStrings from '../../Constants/navigationStrings';
+import HeaderComponent from '../../components/HeaderComponent';
+import imagePath from '../../Constants/imagePath';
 
 
 const SignUp = ({navigation}) => {
@@ -23,35 +25,11 @@ const SignUp = ({navigation}) => {
         style={{
           flex: 1,
         }}>
-        <View style={{width: '100%', alignItems: 'center'}}>
-          <TouchableOpacity
         
-        
-            style={{
-              position: 'absolute',
-              top: getStatusBarHeight() + 15,
-              left: 25,
-            }}>
-            <Image
-              resizeMode="contain"
-              style={{
-                width: 20,
-                height: 20,
-                tintColor: '#fff',
-              }}
-              source={require('../../assets/Icons/back.png')}
-            />
-          </TouchableOpacity>
-          <Text
-            style={{
-              color: '#fff',
-              marginTop: getStatusBarHeight() + 15,
-              fontSize: 18,
-              fontWeight: 'bold',
-            }}>
-            SIGNUP
-          </Text>
-        </View>
+        <HeaderComponent 
+        hdrText={'SIGN UP'}
+        img={imagePath.icBack}
+        onPress={()=>navigation.goBack()}/>
         <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
           <View
             style={{

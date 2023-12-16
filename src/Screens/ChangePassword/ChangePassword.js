@@ -2,6 +2,8 @@ import React from 'react';
 import {View, Text, ImageBackground, Image, TouchableOpacity, TextInput} from 'react-native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import navigationStrings from '../../Constants/navigationStrings';
+import HeaderComponent from '../../components/HeaderComponent';
+import imagePath from '../../Constants/imagePath';
 
 const ChangePassword = ({navigation}) => {
     return (
@@ -15,34 +17,11 @@ const ChangePassword = ({navigation}) => {
           style={{
             alignItems: 'center',
           }}>
-          <View style={{width: '100%', alignItems: 'center'}}>
-            <TouchableOpacity
-            onPress={()=>navigation.navigate('Profile')}
-              style={{
-                position: 'absolute',
-                top: getStatusBarHeight() + 15,
-                left: 25,
-              }}>
-              <Image
-                resizeMode="contain"
-                style={{
-                  width: 20,
-                  height: 20,
-                  tintColor: '#fff',
-                }}
-                source={require('../../assets/Icons/back.png')}
-              />
-            </TouchableOpacity>
-            <Text
-              style={{
-                color: '#fff',
-                marginTop: getStatusBarHeight() + 15,
-                fontSize: 16,
-                fontWeight: 'bold',
-              }}>
-              CHANGE PASSWORD
-            </Text>
-          </View>
+          
+          <HeaderComponent 
+          hdrText={'CHANGE PASSWORD'}
+          img={imagePath.icBack}
+          onPress={()=>navigation.goBack()}  />
           <Image
             resizeMode="contain"
             style={{
@@ -190,7 +169,8 @@ const ChangePassword = ({navigation}) => {
               backgroundColor: '#fff',
               marginTop: 40,
               borderRadius: 10,
-            }}>
+            }}
+            onPress={()=>navigation.goBack()}>
             <Text style={{fontSize: 16}}>Change</Text>
           </TouchableOpacity>
         </View>

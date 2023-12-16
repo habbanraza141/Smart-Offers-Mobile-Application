@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import navigationStrings from '../Constants/navigationStrings'
-import {Home, Coupons, Notifications, Profile} from '../Screens'
+import { Notifications} from '../Screens'
 import HomeStack from './HomeStack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import TabbarComp from '../components/TabbarComp'
+import CouponStack from './CouponStack'
+import ProfileStack from './ProfileStack'
 
 const Tab = createBottomTabNavigator();
 
@@ -21,13 +23,13 @@ const Tab = createBottomTabNavigator();
         initialRouteName="HomeStack"
         drawerContent={props => <DrawerCustom {...props} />}>
         <Tab.Screen
-          name={navigationStrings.HOME}
-          component={Home}
+          name={'Home'}
+          component={HomeStack}
           options={{headerShown: false}}
         />
         <Tab.Screen
-          name={navigationStrings.COUPONS}
-          component={Coupons}
+          name={'Coupons'}
+          component={CouponStack}
           options={{headerShown: false}}
         />
         <Tab.Screen
@@ -36,10 +38,11 @@ const Tab = createBottomTabNavigator();
           options={{headerShown: false}}
         />
         <Tab.Screen
-          name={navigationStrings.PROFILE}
-          component={Profile}
+          name={'Profile'}
+          component={ProfileStack}
           options={{headerShown: false}}
         />
+        
       </Tab.Navigator>
     );
   };

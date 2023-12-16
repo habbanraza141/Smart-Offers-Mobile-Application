@@ -2,31 +2,40 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import imagePath from '../Constants/imagePath';
-// import { useNavigation } from '@react-navigation/native';
+import { Colors } from '../config';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 // create a component
 const HeaderComponent = (
     {
         hdrText,
-        hdrTextStyle = {}
-
-        // onPressBack
-    }
-) => {
-    //     const navigation = useNavigation()
-    //     const goBack = () => {
-    //         navigation.goBack()
-    //     }
+        hdrTextStyle = {},
+        onPress = () => { },
+        img
+    }) => {
     return (
         <View style={styles.container}>
-            {/* <TouchableOpacity
-            // onPress={!!onPressBack? onPressBack:()=> goBack()} 
+            <TouchableOpacity
+            onPress={onPress}
             >
-                <Image source={imagePath.icBack} />
-            </TouchableOpacity> */}
-            <Text></Text>
-            <Text style={{ ...styles.hdrTextStyle, ...hdrTextStyle }}>{hdrText}</Text>
-            <Text></Text>
+                <Image
+                    resizeMode="contain"
+                    style={{
+                        width: 20,
+                        height: 20,
+                        tintColor: '#fff',
+                    }}
+                   
+                    source= {img}
+                    />
+            </TouchableOpacity>
+
+            <Text
+                style={{ ...styles.hdrTextStyle, ...hdrTextStyle }}>
+                {hdrText}
+            </Text>
+            <Text>    </Text>
+
         </View>
     );
 };
@@ -36,9 +45,12 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent:'space-between',
-        height: 40,
-        width:'100%'
+        justifyContent: 'space-between',
+        height: 90,
+        width: '100%',
+        paddingTop: 40,
+        paddingHorizontal: 30,
+        backgroundColor: Colors.primary
     },
 
     hdrTextStyle: {

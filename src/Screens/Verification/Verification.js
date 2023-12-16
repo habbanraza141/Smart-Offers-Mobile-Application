@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 import navigationStrings from '../../Constants/navigationStrings';
-
+import HeaderComponent from '../../components/HeaderComponent';
+import imagePath from '../../Constants/imagePath';
 
 const Verification = ({navigation}) => {
    return (
@@ -24,34 +25,11 @@ const Verification = ({navigation}) => {
           style={{
             alignItems: 'center',
           }}>
-          <View style={{width: '100%', alignItems: 'center'}}>
-            <TouchableOpacity
-              onPress={() => {navigation.navigate(navigationStrings.FORGET_PASSWORD);
-                
-              }}
-              style={{
-                position: 'absolute',
-                top: getStatusBarHeight() + 15,
-                left: 25,
-              }}>
-              <Image
-                resizeMode="contain"
-                style={{
-                  width: 20,
-                  height: 20,
-                  tintColor: '#fff',
-                }}
-                source={require('../../assets/Icons/back.png')}
-              />
-            </TouchableOpacity>
-            <Text
-              style={{
-                color: '#fff',
-                marginTop: getStatusBarHeight() + 15,
-                fontSize: 16,
-                fontWeight: 'bold',
-              }}>VERIFY YOUR ACCOUNT</Text>
-          </View>
+          
+          <HeaderComponent 
+          hdrText={'VERIFY YOUR ACCOUNT'}
+          img={imagePath.icBack}
+          onPress={()=>navigation.navigate(navigationStrings.FORGET_PASSWORD)}/>
           <Image
             resizeMode="contain"
             style={{
@@ -62,49 +40,10 @@ const Verification = ({navigation}) => {
             }}
             source={require('../../assets/logo.png')}
           />
-        </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              width: '80%',
-              borderBottomColor: '#fff',
-              borderBottomWidth: 1,
-              paddingBottom: 5,
-              alignItems: 'flex-end',
-              marginTop: 25,
-            }}>
-            <Image
-              source={require('../../assets/Icons/email.png')}
-              style={{
-                width: 30,
-                height: 30,
-                resizeMode: 'contain',
-                alignSelf: 'flex-end',
-                tintColor: '#fff',
-                marginBottom: 4,
-              }}
-            />
-            <View style={{marginLeft: 15, width: '100%'}}>
-              <Text style={{color: '#fff', fontSize: 12}}>OTP</Text>
-              <TextInput
-                style={{
-                  color: '#fff',
-                  fontSize: 16,
-                  fontWeight: 'bold',
-                  height: 40,
-                  width: '85%',
-                  // backgroundColor: 'red',
-                }}
-                placeholder="Type OTP"
-                placeholderTextColor={'#fff'}
-              />
-            </View>
-          </View>
+       
+       
+          
+          
 
           <TouchableOpacity
             onPress={()=>navigation.navigate(navigationStrings.LOGIN_WITH_EMAIL)}

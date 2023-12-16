@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 import navigationStrings from '../../Constants/navigationStrings';
-
+import HeaderComponent from '../../components/HeaderComponent';
+import imagePath from '../../Constants/imagePath';
 
 const ForgetPassword = ({navigation}) => {
    return (
@@ -24,36 +25,10 @@ const ForgetPassword = ({navigation}) => {
           style={{
             alignItems: 'center',
           }}>
-          <View style={{width: '100%', alignItems: 'center'}}>
-            <TouchableOpacity
-              onPress={() => {navigation.navigate(navigationStrings.LOGIN_WITH_EMAIL);
-                
-              }}
-              style={{
-                position: 'absolute',
-                top: getStatusBarHeight() + 15,
-                left: 25,
-              }}>
-              <Image
-                resizeMode="contain"
-                style={{
-                  width: 20,
-                  height: 20,
-                  tintColor: '#fff',
-                }}
-                source={require('../../assets/Icons/back.png')}
-              />
-            </TouchableOpacity>
-            <Text
-              style={{
-                color: '#fff',
-                marginTop: getStatusBarHeight() + 15,
-                fontSize: 16,
-                fontWeight: 'bold',
-              }}>
-              FORGET PASSWORD
-            </Text>
-          </View>
+         <HeaderComponent 
+          hdrText={'FORGET PASSWORD'} 
+          img={imagePath.icBack}
+          onPress={()=>navigation.goBack()}/>
           <Image
             resizeMode="contain"
             style={{

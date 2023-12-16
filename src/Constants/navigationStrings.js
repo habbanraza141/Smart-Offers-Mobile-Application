@@ -12,8 +12,8 @@ export default {
     TERMS_AND_CONDITIONS: "TermsAndConditions",
     PRIVACY_POLICY: "PrivacyPolicy",
     SIGN_UP: "SignUp",
-    HOME: "Home",
-    COUPONS: "Coupons",
+    HOME: "HomeScreen",
+    COUPONS: "CouponScreen",
     NOTIFICATIONS: "Notifications",
     PROFILE: "Profile",
     VERIFICATION: "Verification"

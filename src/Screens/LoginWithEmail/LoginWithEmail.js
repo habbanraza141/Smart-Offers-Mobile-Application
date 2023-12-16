@@ -11,6 +11,8 @@ import {
 
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import navigationStrings from '../../Constants/navigationStrings';
+import HeaderComponent from '../../components/HeaderComponent';
+import imagePath from '../../Constants/imagePath';
 
 const LoginWithEmail = ({ navigation }) => {
   return (
@@ -20,39 +22,12 @@ const LoginWithEmail = ({ navigation }) => {
       style={{
         flex: 1,
       }}>
-      <View
-        style={{
-          alignItems: 'center',
-        }}>
-        <View style={{ width: '100%', alignItems: 'center' }}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate(navigationStrings.PRE_LOGIN)}
-            style={{
-              position: 'absolute',
-              top: getStatusBarHeight() + 15,
-              left: 25,
-            }}>
-            <Image
-              resizeMode="contain"
-              style={{
-                width: 20,
-                height: 20,
-                tintColor: '#fff',
-              }}
-              source={require('../../assets/Icons/back.png')}
-            />
-          </TouchableOpacity>
-          <Text
-            style={{
-              color: '#fff',
-              marginTop: getStatusBarHeight() + 15,
-              fontSize: 18,
-              fontWeight: 'bold',
-            }}>
-            SIGNIN
-          </Text>
-        </View>
-      </View>
+     
+     <HeaderComponent 
+     hdrText={'SIGN IN'}
+     img={imagePath.icBack}
+     onPress={() => navigation.goBack()}
+      />
       <ScrollView
         bounces={false}
         showsVerticalScrollIndicator={false}
@@ -150,7 +125,7 @@ const LoginWithEmail = ({ navigation }) => {
           </View>
         </View>
         <TouchableOpacity
-                onPress={()=>navigation.navigate('HomeStack')}
+                onPress={()=>navigation.navigate('AppStack')}
 
           style={{
             width: '80%',

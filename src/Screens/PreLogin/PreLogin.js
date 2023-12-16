@@ -11,17 +11,18 @@ const PreLogin = ({navigation}) => {
     return (
         <ImageBackground
             source={require('../../assets/bg.png')}
-            style={{ height: '100%', width: '100%', }} >
-            <View style={styles.container}>
+            style={styles.container} >
 
                 <HeaderComponent
                     hdrText={"pre login"}
                     hdrTextStyle={{ textAlign: 'center' }} />
+          <View
+          style={{height: '100%', width: '100%', paddingLeft:  30, paddingRight: 30, alignItems: 'center'}} >      
                 <Image
                     resizeMode='contain'
                     source={require('../../assets/logo.png')}
                     style={{
-                      width: '72%',
+                      width: '80%',
                       height: 120,
                       marginBottom: 40,
                       marginTop: 30,
@@ -29,6 +30,7 @@ const PreLogin = ({navigation}) => {
                 <ButtonComponent
                     btnText={"Signin with Email"}
                     img={imagePath.email}
+                    imgStyle={{tintColor: '#ff6807'}}
                     btnStyle={{ width: '100%', marginBottom: 15 }}
                     btnTextStyle={{}}
                     onPress={()=>navigation.navigate(navigationStrings.LOGIN_WITH_EMAIL)}
@@ -37,6 +39,7 @@ const PreLogin = ({navigation}) => {
                 <ButtonComponent
                     btnText={"Signin with Phone"}
                     img={imagePath.phone}
+                    imgStyle={{tintColor: '#ed3031'}}
                     btnStyle={{ width: '100%', marginBottom: 15 }}
                     btnTextStyle={{}}
                     onPress={()=>navigation.navigate(navigationStrings.LOGIN_WITH_PHONE)}
@@ -48,29 +51,30 @@ const PreLogin = ({navigation}) => {
                     img={imagePath.apple}
                     btnStyle={{ width: '100%', marginBottom: 15 }}
                     btnTextStyle={{}}
-                    onPress={()=>navigation.navigate('HomeStack')}
+                    onPress={()=>navigation.navigate('AppStack')}
 
                 />
 
                 <ButtonComponent
                     btnText={"Signin with Facebook"}
                     img={imagePath.facebook}
+                    imgStyle={{tintColor: '#405B9D'}}
                     btnStyle={{ width: '100%', marginBottom: 15 }}
                     btnTextStyle={{}}
-                    onPress={()=>navigation.navigate('HomeStack')}
+                    onPress={()=>navigation.navigate('AppStack')}
 
                 />
 
                 <ButtonComponent
                     btnText={"Signin with Google"}
                     img={imagePath.google}
+                    
                     btnStyle={{ width: '100%', marginBottom: 15 }}
                     btnTextStyle={{}}
-                    onPress={()=>navigation.navigate('HomeStack')}
+                    onPress={()=>navigation.navigate('AppStack')}
 
                 />
-
-            </View>
+</View>
         </ImageBackground>
     );
 };
@@ -80,9 +84,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        paddingLeft: 30,
-        paddingTop: 40,
-        paddingRight: 30
+     
     },
 });
 

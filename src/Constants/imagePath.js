@@ -1,7 +1,7 @@
 export default {
     // showeye: require('../assets/images/show.png'),
     // hideEye: require('../assets/images/hide.png'),
-    // icBack: require('../assets/images/backward.png'),
+    icBack: require('../assets/Icons/back.png'),
     // icForward: require('../assets/images/forward.png'),
     // activeCheck: require('../assets/images/check.png'),
     // inActiveCheck: require('../assets/images/unchecked.png'),
@@ -11,6 +11,7 @@ export default {
     // booking: require('../assets/images/booking.png'),
     // location: require('../assets/images/location.png'),
     // notification: require('../assets/images/notification.png'),
+    menu: require('../assets/Icons/menu.png'),
     email: require('../assets/Icons/email.png'),
     phone: require('../assets/Icons/phone.png'),
     apple: require('../assets/Icons/apple.png'),

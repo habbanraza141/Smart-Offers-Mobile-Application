@@ -11,7 +11,8 @@ const ButtonComponent = ({
     btnStyle = {},
     onPress = () => { },
     img,
-    btnTextStyle= {}
+    btnTextStyle= {},
+    imgStyle= {}
 }) => {
     return (
         <TouchableOpacity
@@ -21,7 +22,7 @@ const ButtonComponent = ({
 
             <Image 
             source={img} 
-            style={{height: 40, width: 40, marginLeft: 30, marginRight: 30}} />
+            style={{...styles.imgStyle, ...imgStyle}} />
                 <Text style={{...styles.btnTextStyle, ...btnTextStyle}}>{btnText}</Text>
             
         </TouchableOpacity>
@@ -42,7 +43,15 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: 'black',
         fontWeight: '500',
+    },
+
+    imgStyle: {
+        height: 40, 
+        width: 40, 
+        marginLeft: 30, 
+        marginRight: 30
     }
+    
 });
 
 //make this component available to the app
